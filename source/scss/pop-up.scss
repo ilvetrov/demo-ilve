@@ -1,0 +1,34 @@
+@import "./partials/variables";
+@import "./partials/fonts.scss";
+
+.demo-ilve {
+  * {
+    all: unset;
+  }
+}
+
+.demo-ilve {
+  @import "./partials/reset.scss";
+  @import "./partials/global";
+
+  @import "./partials/container-size.scss";
+  @import "./partials/click-extender.scss";
+  @import "./partials/titles.scss";
+  @import "./partials/name-logo.scss";
+
+  @import "./partials/pop-up.scss";
+  @import "./partials/button.scss";
+
+  font-size: 16px;
+  font-family: 'Raleway', sans-serif;
+  font-feature-settings: 'lnum';
+  font-weight: 400;
+  color: $default-color;
+  box-sizing: border-box;
+
+  @import "./partials/demo-pop-up.scss";
+  
+  .demo-pop-up {
+    z-index: 99999;
+  }
+}

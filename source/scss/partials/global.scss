@@ -1,0 +1,36 @@
+::selection {
+  background-color: #d6ceff;
+}
+html, body {
+  overflow-x: hidden;
+}
+html {
+  font-size: 16px;
+}
+body {
+  font-family: 'Raleway', sans-serif;
+  font-feature-settings: 'lnum';
+  font-weight: 400;
+  color: $default-color;
+  box-sizing: border-box;
+}
+* {
+  box-sizing: inherit;
+}
+strong {
+  font-weight: 700;
+}
+.disabled {
+  display: none;
+}
+.no-link-style {
+  text-decoration: none;
+  outline: none !important;
+  color: inherit;
+}
+
+@media (max-width: 341px) {
+  html {
+    font-size: 14px;
+  }
+}

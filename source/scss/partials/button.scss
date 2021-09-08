@@ -1,0 +1,88 @@
+.accent-button {
+  display: inline-flex;
+  background: none;
+  border: 1px solid $accent-color;
+  border-radius: 2px;
+  font-size: .88rem;
+  font-weight: 900;
+  letter-spacing: .015em;
+  transition: color .2s;
+  padding: 0;
+  justify-content: center;
+  max-width: 100%;
+  cursor: pointer;
+
+  &__text {
+    font-size: inherit;
+    display: block;
+    padding: 1em 2.63em;
+    box-sizing: content-box;
+    white-space: nowrap;
+    text-align: center;
+    line-height: 1.2;
+    user-select: none;
+  }
+  
+  &[href] {
+    display: inline-block;
+    text-decoration: none;
+    outline: none !important;
+    color: inherit;
+  }
+
+  &:hover, &:focus {
+    color: $accent-color;
+  }
+  
+  &_wide .accent-button {
+    &__text {
+      min-width: 9em;
+    }
+  }
+  &_extra-wide .accent-button {
+    &__text {
+      min-width: 12.4em;
+    }
+  }
+  &_big .accent-button {
+    &__text {
+      padding: 1.2em 3.7em;
+    }
+  }
+  &_solid {
+    color: #fff;
+    background-color: $accent-color;
+    border: none;
+    transition: background-color .2s;
+
+    &:hover, &:focus {
+      color: #fff;
+      background-color: #2d7eff;
+    }
+  }
+  &_solid[href] {
+    color: #fff;
+  }
+  &_secondary {
+    border: none;
+  }
+  &_secondary .accent-button {
+    &__text {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+  &_regular .accent-button {
+    &__text {
+      font-weight: 400;
+    }
+  }
+}
+
+@media (max-width: 380px) {
+  .accent-button {
+    &_extra-wide {
+      width: 100%;
+    }
+  }
+}
