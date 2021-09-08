@@ -1,6 +1,7 @@
 <?php
 
-require_once __DIR__ . '/../inc/array-remove-last.php';
+require_once PATH_PREFIX . '/inc/array-remove-last.php';
+require_once PATH_PREFIX . '/inc/get-php-files.php';
 
 class Languages
 {

@@ -29,7 +29,7 @@
       "name": "Launch root index",
       "type": "php",
       "request": "launch",
-      "program": "${workspaceRoot}/index.php",
+      "program": "${workspaceRoot}/public/index.php",
       "cwd": "${workspaceRoot}",
       "port": 0,
       "runtimeArgs": [
@@ -50,7 +50,7 @@
         "-S",
         "localhost:9100"
       ],
-      "program": "",
+      "program": "${workspaceRoot}/public/index.php",
       "cwd": "${workspaceRoot}",
       "port": 9003,
       "serverReadyAction": {
