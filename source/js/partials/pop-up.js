@@ -1,21 +1,21 @@
 const { blockScroll, unblockScroll } = require("./blockScroll");
 const checkThatCurrentElementExistsOutside = require("./outsideChecker");
 
-const popUps = document.querySelectorAll('[data-pop-up]');
+const popUps = document.querySelectorAll('[data-demo-pop-up]');
 const callbacksOfHiding = {};
 const events = {};
 
 for (let i = 0; i < popUps.length; i++) {
   const popUp = popUps[i];
-  const popUpName = popUp.getAttribute('data-pop-up');
-  const popUpButtons = document.querySelectorAll(`[data-pop-up-button="${popUpName}"]`);
-  const popUpCloseButtons = document.querySelectorAll(`[data-pop-up-close-button="${popUpName}"]`);
+  const popUpName = popUp.getAttribute('data-demo-pop-up');
+  const popUpButtons = document.querySelectorAll(`[data-demo-pop-up-button="${popUpName}"]`);
+  const popUpCloseButtons = document.querySelectorAll(`[data-demo-pop-up-close-button="${popUpName}"]`);
   const popUpEventButtons = popUp.querySelectorAll(`[data-event-button]`);
-  const popUpContent = popUp.querySelector('[data-pop-up-content]') || popUp;
-  const popUpActiveAfterOutClick = popUp.hasAttribute('data-pop-up-active-after-out-click');
-  const popUpNeedSetPositionToButton = popUp.hasAttribute('data-pop-up-set-position-to-button');
-  const closeAnywhere = popUp.hasAttribute('data-pop-up-close-anywhere');
-  const eventName = popUp.getAttribute('data-pop-up-event');
+  const popUpContent = popUp.querySelector('[data-demo-pop-up-content]') || popUp;
+  const popUpActiveAfterOutClick = popUp.hasAttribute('data-demo-pop-up-active-after-out-click');
+  const popUpNeedSetPositionToButton = popUp.hasAttribute('data-demo-pop-up-set-position-to-button');
+  const closeAnywhere = popUp.hasAttribute('data-demo-pop-up-close-anywhere');
+  const eventName = popUp.getAttribute('data-demo-pop-up-event');
   
   for (let buttonIteration = 0; buttonIteration < popUpButtons.length; buttonIteration++) {
     const popUpButton = popUpButtons[buttonIteration];
@@ -62,7 +62,7 @@ for (let i = 0; i < popUps.length; i++) {
   }
   if (!popUpActiveAfterOutClick) {
     popUp.addEventListener('click', e => {
-      if (!popUp.classList.contains('hidden') && checkThatCurrentElementExistsOutside(popUpContent, e.target)) {
+      if (!popUp.classList.contains('hidden') && window.innerWidth >= 1200 && checkThatCurrentElementExistsOutside(popUpContent, e.target)) {
         hidePopUp(popUp);
       }
     });
@@ -98,7 +98,7 @@ function showPopUp(popUp) {
     popUp.classList.remove('hidden');
   }, 100);
   
-  const closeAnywhere = popUp.hasAttribute('data-pop-up-close-anywhere');
+  const closeAnywhere = popUp.hasAttribute('data-demo-pop-up-close-anywhere');
   if (closeAnywhere) {
     setTimeout(() => {
       popUp.classList.add('ready-to-close');
@@ -106,7 +106,7 @@ function showPopUp(popUp) {
   }
 }
 
-window.showPopUp = showPopUp;
+window.showDemoPopUp = showPopUp;
 
 function hidePopUp(popUp) {
   popUp = detectPopUpInVariable(popUp);
@@ -115,12 +115,12 @@ function hidePopUp(popUp) {
   popUp.classList.add('hidden');
   setTimeout(() => {
     popUp.classList.add('disabled');
-    if (!popUp.hasAttribute('data-pop-up-do-not-show-scroll-bar-on-hide')) {
+    if (!popUp.hasAttribute('data-demo-pop-up-do-not-show-scroll-bar-on-hide')) {
       unblockScroll();
     }
   }, 220);
 
-  const callbacks = callbacksOfHiding[popUp.getAttribute('data-pop-up')];
+  const callbacks = callbacksOfHiding[popUp.getAttribute('data-demo-pop-up')];
   if (callbacks) {
     for (let callbackIteration = 0; callbackIteration < callbacks.length; callbackIteration++) {
       const callback = callbacks[callbackIteration];
@@ -128,7 +128,7 @@ function hidePopUp(popUp) {
     }
   }
 
-  const closeAnywhere = popUp.hasAttribute('data-pop-up-close-anywhere');
+  const closeAnywhere = popUp.hasAttribute('data-demo-pop-up-close-anywhere');
   if (closeAnywhere) {
     setTimeout(() => {
       popUp.classList.remove('ready-to-close');
@@ -179,10 +179,10 @@ function addCallbackToHideOfPopUp(popUp, callback) {
   popUp = detectPopUpInVariable(popUp);
   if (!popUp) return false;
 
-  if (!callbacksOfHiding[popUp.getAttribute('data-pop-up')]) {
-    callbacksOfHiding[popUp.getAttribute('data-pop-up')] = [];
+  if (!callbacksOfHiding[popUp.getAttribute('data-demo-pop-up')]) {
+    callbacksOfHiding[popUp.getAttribute('data-demo-pop-up')] = [];
   }
-  callbacksOfHiding[popUp.getAttribute('data-pop-up')].push(callback);
+  callbacksOfHiding[popUp.getAttribute('data-demo-pop-up')].push(callback);
 }
 
 function callEvent(eventName, eventCaller) {
@@ -208,7 +208,7 @@ function addActionToEvent(event, action) {
 
 function detectPopUpInVariable(popUp) {
   if (typeof popUp === 'string' || typeof popUp === 'number') {
-    popUp = document.querySelector(`[data-pop-up="${popUp}"]`);
+    popUp = document.querySelector(`[data-demo-pop-up="${popUp}"]`);
   }
   return popUp;
 }

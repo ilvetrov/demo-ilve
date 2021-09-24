@@ -56,7 +56,7 @@ class Languages
   }
   static public function get_requested_name()
   {
-    if (@$_GET['demo-lang']) return self::validate($_GET['demo-lang']);
+    if (@$_REQUEST['lang']) return self::validate($_REQUEST['lang']);
     return false;
   }
 }

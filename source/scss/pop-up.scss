@@ -32,3 +32,16 @@
     z-index: 99999;
   }
 }
+
+@media (max-width: 1199px) {
+  .demo-ilve {
+    position: fixed;
+    z-index: 99999;
+    opacity: 0;
+    transition: opacity .3s 1s;
+    
+    &.page-loaded {
+      opacity: 1;
+    }
+  }
+}

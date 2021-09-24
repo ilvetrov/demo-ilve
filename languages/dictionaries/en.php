@@ -19,7 +19,7 @@ return [
       "text" => "The site has stopped working."
     ],
     [
-      "text" => "But here you can look at its working version."
+      "text" => "<strong>But</strong> here you can look at its working version."
     ],
     [
       "text" => "Previously, the site was under ",

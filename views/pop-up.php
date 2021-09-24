@@ -1,10 +1,10 @@
-<div class="pop-up demo-pop-up demo-pop-up_<?php echo $lang_name; ?> <?php echo $shimmering ? 'demo-pop-up_shimmering' : ''; ?> <?php echo $hidden ? ' hidden disabled' : ''; ?>" data-pop-up="<?php echo $pop_up_name; ?>" <?php echo $data_pop_up_do_not_show_scroll_bar_on_hide ? 'data-pop-up-do-not-show-scroll-bar-on-hide' : ''; ?>>
+<div class="pop-up-for-demo demo-pop-up demo-pop-up_<?php echo $lang_name; ?> <?php echo $shimmering ? 'demo-pop-up_shimmering' : ''; ?> <?php echo $hidden ? ' hidden disabled' : ''; ?>" data-demo-pop-up="<?php echo $pop_up_name; ?>" <?php echo $data_pop_up_do_not_show_scroll_bar_on_hide ? 'data-demo-pop-up-do-not-show-scroll-bar-on-hide' : ''; ?>>
   <div class="demo-pop-up__background"></div>
   <div class="demo-pop-up__wrap">
 
-    <div class="demo-pop-up__content container-size">
+    <div class="demo-pop-up__content container-size" data-demo-pop-up-content>
       <?php if ($closing_cross): ?>
-        <button class="demo-pop-up__closing-cross-button" data-pop-up-close-button="<?php echo $pop_up_name; ?>">
+        <button class="demo-pop-up__closing-cross-button" data-demo-pop-up-close-button="<?php echo $pop_up_name; ?>">
           <div class="demo-pop-up__closing-cross-wrap">
             <img src="/img/close.svg" alt="<?php echo lang('close'); ?>" class="demo-pop-up__closing-cross click-extender">
           </div>
@@ -38,13 +38,13 @@
       <div class="demo-pop-up__button-block">
         <?php if ($buttons) { ?>
           <?php foreach ($buttons as $button): ?>
-            <<?php if ($button['is_link']) { ?>a href="<?php echo $button['link']; ?>" target="_blank"<?php } else { ?>div<?php }; ?> class="accent-button accent-button_extra-wide <?php echo $button['is_solid'] ? 'accent-button_solid' : 'accent-button_secondary accent-button_regular'?> demo-pop-up__button" <?php if ($button['close']): ?>data-pop-up-close-button="<?php echo $pop_up_name; ?>"<?php endif; ?>>
+            <<?php if ($button['is_link']) { ?>a href="<?php echo $button['link']; ?>" target="_blank"<?php } else { ?>div<?php }; ?> class="accent-button accent-button_extra-wide <?php echo $button['is_solid'] ? 'accent-button_solid' : 'accent-button_secondary accent-button_regular'?> demo-pop-up__button" <?php if ($button['close']): ?>data-demo-pop-up-close-button="<?php echo $pop_up_name; ?>"<?php endif; ?>>
               <span class="accent-button__text"><?php echo $button['text']; ?></span>
             </<?php if ($button['is_link']) { ?>a<?php } else { ?>div<?php } ?>>
             <!-- /.accent-button -->
           <?php endforeach; ?>
         <?php } else { ?>
-          <button class="accent-button accent-button_extra-wide accent-button_solid demo-pop-up__button" data-pop-up-close-button="<?php echo $pop_up_name; ?>">
+          <button class="accent-button accent-button_extra-wide accent-button_solid demo-pop-up__button" data-demo-pop-up-close-button="<?php echo $pop_up_name; ?>">
             <span class="accent-button__text"><?php echo lang('hide_notification'); ?></span>
           </button>
           <!-- /.accent-button -->
@@ -61,4 +61,4 @@
   </div>
   <!-- /.demo-pop-up__wrap -->
 </div>
-<!-- /.pop-up -->
+<!-- /.pop-up-for-demo -->

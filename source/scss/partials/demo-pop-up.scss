@@ -116,7 +116,7 @@
 
   &_shimmering .demo-pop-up {
     &__background {
-      animation: shimmeringPopUp 5s infinite alternate ease-in-out;
+      animation: shimmeringDemoPopUp 5s infinite alternate ease-in-out;
     }
   }
 
@@ -151,14 +151,28 @@
   }
 }
 
-@keyframes shimmeringPopUp {
+@media (min-width: 1200px) {
+  .demo-pop-up {
+    &__background {
+      background-color: unset;
+      background-image: linear-gradient(340deg,hsl(0, 0%, 100%) 0%,hsla(0, 0%, 100%, 0.988) 16.1%,hsla(0, 0%, 100%, 0.955) 29.7%,hsla(0, 0%, 100%, 0.904) 41%,hsla(0, 0%, 100%, 0.837) 50.4%,hsla(0, 0%, 100%, 0.759) 58.1%,hsla(0, 0%, 100%, 0.671) 64.4%,hsla(0, 0%, 100%, 0.578) 69.5%,hsla(0, 0%, 100%, 0.482) 73.8%,hsla(0, 0%, 100%, 0.387) 77.3%,hsla(0, 0%, 100%, 0.295) 80.5%,hsla(0, 0%, 100%, 0.21) 83.6%,hsla(0, 0%, 100%, 0.135) 86.8%,hsla(0, 0%, 100%, 0.073) 90.4%,hsla(0, 0%, 100%, 0.027) 94.8%,hsla(0, 0%, 100%, 0) 100%);
+    }
+    &__wrap {
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding-bottom: 65px;
+    }
+  }
+}
+
+@keyframes shimmeringDemoPopUp {
   0% {
     opacity: 1;
   }
-  60% {
+  70% {
     opacity: 1;
   }
   100% {
-    opacity: .95;
+    opacity: .9;
   }
 }
