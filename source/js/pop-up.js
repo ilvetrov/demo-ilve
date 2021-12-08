@@ -1,21 +1,14 @@
 try {
   require('./partials/set-page-loaded-class');
-  const { showPopUp, checkPopUp, addCallbackToHideOfPopUp } = require("./partials/pop-up");
+  require('./partials/click');
+  const { showPopUp, checkPopUp, addCallbackToHideOfPopUp, hidePopUp } = require("./partials/pop-up");
   const cookies = require("./partials/cookies");
   
-  if (!cookies.get('demo_pop_up_shown')) {
-    if (window.innerWidth <= 1199) {
-      window.addEventListener('load', function() {
-        setTimeout(() => {
-          if (checkPopUp('demo-hello')) {
-            showPopUp('demo-hello');
-          }
-        }, 0);
-      });
-    }
+  if (cookies.get('demo_pop_up_shown')) {
+    hidePopUp('demo-hello');
+  } else {
     setTimeout(() => {
       if (checkPopUp('demo-hello')) {
-        if (window.innerWidth >= 1200) showPopUp('demo-hello');
         addCallbackToHideOfPopUp('demo-hello', function() {
           cookies.set('demo_pop_up_shown', true, 1);
         });

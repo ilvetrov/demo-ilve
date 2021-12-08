@@ -1,63 +1,74 @@
-<div class="pop-up-for-demo demo-pop-up demo-pop-up_<?php echo $lang_name; ?> <?php echo $shimmering ? 'demo-pop-up_shimmering' : ''; ?> <?php echo $hidden ? ' hidden disabled' : ''; ?>" data-demo-pop-up="<?php echo $pop_up_name; ?>" <?php echo $data_pop_up_do_not_show_scroll_bar_on_hide ? 'data-demo-pop-up-do-not-show-scroll-bar-on-hide' : ''; ?>>
-  <div class="demo-pop-up__background"></div>
+<div
+  class="<?php echo_array_if([
+    "demo-pop-up" => true,
+    "demo-pop-up_$lang_name" => true,
+    "demo-pop-up_shimmering" => $shimmering,
+    "hidden disabled" => $hidden,
+  ]); ?>"
+  data-demo-pop-up="<?php echo $pop_up_name; ?>"
+  data-demo-pop-up-active-after-out-click
+  <?php if (@$ignore_esc): ?>
+    data-demo-pop-up-ignore-esc
+  <?php endif; ?>
+  <?php echo_array_if($tags); ?>
+>
   <div class="demo-pop-up__wrap">
 
-    <div class="demo-pop-up__content container-size" data-demo-pop-up-content>
-      <?php if ($closing_cross): ?>
-        <button class="demo-pop-up__closing-cross-button" data-demo-pop-up-close-button="<?php echo $pop_up_name; ?>">
-          <div class="demo-pop-up__closing-cross-wrap">
-            <img src="/img/close.svg" alt="<?php echo lang('close'); ?>" class="demo-pop-up__closing-cross click-extender">
+    <div class="demo-pop-up__content" data-demo-pop-up-content>
+      <div class="demo-notice <?php echo_array_if([
+        "clicked" => @$clicked
+      ]); ?>" data-click-to="<?php echo $pop_up_name; ?>" data-click-set="<?php echo $pop_up_name; ?>">
+        <div class="demo-notice__header">
+          <?php ob_start(); ?>
+          <div class="demo-notice__logo">
+            <a
+              href="<?php echo CONFIG['target_domain']; ?>"
+              target="_blank"
+              class="demo-notice__link not-link-style"
+              onclick="return checkClicked('<?php echo $pop_up_name; ?>');"
+              title="<?php echo lang('created_by'); ?>"
+            >
+              <?php readfile(PATH_PREFIX . "/public/assets/img/ilve-$lang_name.svg"); ?>
+            </a>
+            <!-- /.demo-notice__link -->
           </div>
-          <!-- /.demo-pop-up__closing-cross-wrap -->
-        </button>
-        <!-- /.demo-pop-up__closing-cross-button -->
-      <?php endif; ?>
-      <?php if ($with_logo): ?>
-        <div class="demo-pop-up__logo-block">
-          <div class="name-logo demo-pop-up__logo-block">
-            <span><?php echo lang('by'); ?> <span class="name-logo__name"><?php echo lang('by_my_name'); ?></span></span>
-            
+          <!-- /.demo-notice__logo -->
+          <?php $logo_html = ob_get_clean(); ?>
+          <?php echo $logo_html; ?>
+
+          <div class="demo-notice__title">
+            <?php echo lang('demo_site'); ?>
           </div>
-          <!-- /.name-logo -->
+          <!-- /.demo-notice__title -->
+          <div class="void demo-notice__balance-logo">
+            <?php echo $logo_html; ?>
+          </div>
+          <!-- /.void -->
+          <div class="demo-notice__close-wrap">
+            <button class="demo-notice__close not-button-style click-extender" data-demo-pop-up-close-button="<?php echo $pop_up_name; ?>">
+              <?php readfile(PATH_PREFIX . "/public/assets/img/close.svg"); ?>
+            </button>
+            <!-- /.demo-notice__close -->
+          </div>
+          <!-- /.demo-notice__close-wrap -->
         </div>
-        <!-- /.demo-pop-up__logo-block -->
-      <?php endif; ?>
-      <div class="demo-pop-up__title page-title page-title_free-transform page-title_mini">
-        <?php echo $title; ?>
+        <!-- /.demo-notice__header -->
+        <div class="demo-notice__content">
+          <div class="demo-text">
+            <?php foreach ($demo_text as $paragraph): ?>
+              <p class="demo-text__p">
+                <?php echo $paragraph['text']; ?><?php if ($paragraph['link']): ?><a href="<?php echo $link; ?>" target="_blank" class="demo-text__link" rel="noopener noreferrer"><?php echo $paragraph['link']; ?></a>.<?php endif; ?>
+              </p>
+              <!-- /.demo-text__p -->
+            <?php endforeach; ?>
+          </div>
+          <!-- /.demo-text -->
+        </div>
+        <!-- /.demo-notice__content -->
       </div>
-      <!-- /.demo-pop-up__title -->
-      <div class="demo-pop-up__text">
-        <?php foreach ($demo_text as $paragraph): ?>
-          <p class="demo-pop-up__p">
-            <?php echo $paragraph['text']; ?><?php if ($paragraph['link']): ?><a href="<?php echo $link; ?>" target="_blank" class="demo-pop-up__link" rel="noopener noreferrer"><?php echo $paragraph['link']; ?></a>.<?php endif; ?>
-          </p>
-          <!-- /.demo-pop-up__p -->
-        <?php endforeach; ?>
-      </div>
-      <!-- /.demo-pop-up__text -->
-      <div class="demo-pop-up__button-block">
-        <?php if ($buttons) { ?>
-          <?php foreach ($buttons as $button): ?>
-            <<?php if ($button['is_link']) { ?>a href="<?php echo $button['link']; ?>" target="_blank"<?php } else { ?>div<?php }; ?> class="accent-button accent-button_extra-wide <?php echo $button['is_solid'] ? 'accent-button_solid' : 'accent-button_secondary accent-button_regular'?> demo-pop-up__button" <?php if ($button['close']): ?>data-demo-pop-up-close-button="<?php echo $pop_up_name; ?>"<?php endif; ?>>
-              <span class="accent-button__text"><?php echo $button['text']; ?></span>
-            </<?php if ($button['is_link']) { ?>a<?php } else { ?>div<?php } ?>>
-            <!-- /.accent-button -->
-          <?php endforeach; ?>
-        <?php } else { ?>
-          <button class="accent-button accent-button_extra-wide accent-button_solid demo-pop-up__button" data-demo-pop-up-close-button="<?php echo $pop_up_name; ?>">
-            <span class="accent-button__text"><?php echo lang('hide_notification'); ?></span>
-          </button>
-          <!-- /.accent-button -->
-        <?php }; ?>
-      </div>
-      <!-- /.demo-pop-up__button-block -->
-      <noscript class="demo-pop-up__noscript">
-        <?php echo lang('enable_js'); ?>
-      </noscript>
-      <!-- /.demo-pop-up__noscript -->
+      <!-- /.demo-notice -->
     </div>
     <!-- /.demo-pop-up__content -->
-
   </div>
   <!-- /.demo-pop-up__wrap -->
 </div>

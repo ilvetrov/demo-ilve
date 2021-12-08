@@ -2,31 +2,22 @@
 @import "./partials/fonts.scss";
 
 .demo-ilve {
-  * {
-    all: unset;
-  }
-}
-
-.demo-ilve {
   @import "./partials/reset.scss";
   @import "./partials/global";
 
   @import "./partials/container-size.scss";
   @import "./partials/click-extender.scss";
-  @import "./partials/titles.scss";
-  @import "./partials/name-logo.scss";
-
-  @import "./partials/pop-up.scss";
-  @import "./partials/button.scss";
 
   font-size: 16px;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Manrope', sans-serif;
   font-feature-settings: 'lnum';
   font-weight: 400;
   color: $default-color;
   box-sizing: border-box;
+  pointer-events: none;
 
   @import "./partials/demo-pop-up.scss";
+  @import "./partials/demo-notice.scss";
   
   .demo-pop-up {
     z-index: 99999;
@@ -38,7 +29,7 @@
     position: fixed;
     z-index: 99999;
     opacity: 0;
-    transition: opacity .3s 1s;
+    transition: opacity .15s;
     
     &.page-loaded {
       opacity: 1;

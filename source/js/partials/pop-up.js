@@ -67,11 +67,13 @@ for (let i = 0; i < popUps.length; i++) {
       }
     });
   }
-  document.body.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && !popUp.classList.contains('hidden')) {
-      hidePopUp(popUp);
-    }
-  });
+  if (!popUp.hasAttribute('data-demo-pop-up-ignore-esc')) {
+    document.body.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && !popUp.classList.contains('hidden')) {
+        hidePopUp(popUp);
+      }
+    });
+  }
   if (closeAnywhere) {
     popUp.addEventListener('click', function() {
       if (!popUp.classList.contains('hidden') && popUp.classList.contains('ready-to-close')) {

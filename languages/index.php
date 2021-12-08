@@ -54,6 +54,10 @@ class Languages
   {
     return self::get_current()[$text] ?? self::get_default()[$text] ?? $text;
   }
+  static public function check(String $text)
+  {
+    return self::text($text) !== $text;
+  }
   static public function get_requested_name()
   {
     if (@$_REQUEST['lang']) return self::validate($_REQUEST['lang']);

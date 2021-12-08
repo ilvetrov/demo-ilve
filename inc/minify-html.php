@@ -7,7 +7,7 @@ function minify_html($html)
 
 function remove_whitespaces($html)
 {
-  return str_replace("  ", "", preg_replace("/\r|\n/", "", $html));
+  return preg_replace("/\s\s+/", " ", preg_replace("/\r|\n/", "", $html));
 }
 
 function remove_comments($html)
