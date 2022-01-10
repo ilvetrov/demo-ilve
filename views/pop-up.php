@@ -2,7 +2,7 @@
   class="<?php echo_array_if([
     "demo-pop-up" => true,
     "demo-pop-up_$lang_name" => true,
-    "demo-pop-up_shimmering" => $shimmering,
+    "demo-pop-up_shimmering" => @$shimmering,
     "hidden disabled" => $hidden,
   ]); ?>"
   data-demo-pop-up="<?php echo $pop_up_name; ?>"

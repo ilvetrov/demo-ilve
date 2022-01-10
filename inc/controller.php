@@ -35,12 +35,12 @@ class Controller
   }
   static protected function check_request_property(String $property_name, $checked_value = 'true')
   {
-    return $_GET[$property_name] === $checked_value
-    || $_POST[$property_name] === $checked_value;
+    return @$_GET[$property_name] === $checked_value
+    || @$_POST[$property_name] === $checked_value;
   }
   static protected function get_request_property(String $property_name)
   {
-    return $_REQUEST[$property_name];
+    return @$_REQUEST[$property_name];
   }
   static protected function get_style(String $name, Array $variables = [])
   {
