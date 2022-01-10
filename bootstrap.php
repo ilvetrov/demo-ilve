@@ -2,6 +2,7 @@
 require PATH_PREFIX . '/core-config.php';
 require PATH_PREFIX . '/config.php';
 
+require PATH_PREFIX . '/inc/errors.php';
 require PATH_PREFIX . '/inc/html-inside.php';
 
 require PATH_PREFIX . '/languages/index.php';
