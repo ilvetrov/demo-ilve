@@ -10,8 +10,7 @@ class Controller
   static public function init()
   {
     self::$default_variables = [
-      "lang_name" => Languages::get_current_name(),
-      "main_domain" => CONFIG['production'] ? CONFIG['main_domain'] : CONFIG['dev_domain']
+      "lang_name" => Languages::get_current_name()
     ];
     self::$development_variables = [];
   }

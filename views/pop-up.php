@@ -22,7 +22,11 @@
           <?php ob_start(); ?>
           <div class="demo-notice__logo">
             <a
-              href="<?php echo CONFIG['target_domain']; ?>"
+              href="<?php echo CONFIG['target_domain']; ?><?php
+                if (Languages::get_current_name() !== CONFIG['default_target_domain_lang']) {
+                  echo '/' . Languages::get_current_name() . '/';
+                }
+              ?>"
               target="_blank"
               class="demo-notice__link not-link-style"
               onclick="return checkClicked('<?php echo $pop_up_name; ?>');"
